@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import StyledComponentsRegistry from "@/lib/registry";
 
 export const metadata: Metadata = {
   title: "Professional Portfolio",
@@ -15,10 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        <Navigation />
-        <main className="min-h-screen">{children}</main>
-        <Footer />
+      <body>
+        <StyledComponentsRegistry>
+          <Navigation />
+          {children}
+          <Footer />
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

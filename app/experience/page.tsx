@@ -1,7 +1,225 @@
-export const metadata = {
-  title: "Experience | Portfolio",
-  description: "My professional experience and knowledge sharing",
-};
+'use client';
+
+import styled from 'styled-components';
+
+const PageWrapper = styled.div`
+  background: var(--background);
+  min-height: 100vh;
+  padding: 4rem 0;
+`;
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
+`;
+
+const Header = styled.header`
+  margin-bottom: 5rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 3rem;
+  }
+`;
+
+const Title = styled.h1`
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--foreground);
+  margin-bottom: 1rem;
+`;
+
+const Subtitle = styled.p`
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--secondary);
+  max-width: 700px;
+`;
+
+const Section = styled.section`
+  margin-bottom: 6rem;
+
+  @media (max-width: 768px) {
+    margin-bottom: 4rem;
+  }
+`;
+
+const SectionTitle = styled.h2`
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+  margin-bottom: 3rem;
+`;
+
+const ExperienceCard = styled.article`
+  border-left: 2px solid var(--border);
+  padding-left: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    padding-left: 1.5rem;
+  }
+`;
+
+const ExperienceHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
+
+const ExperienceInfo = styled.div``;
+
+const JobTitle = styled.h3`
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+`;
+
+const Company = styled.p`
+  font-size: 1.1rem;
+  color: var(--accent);
+  font-weight: 500;
+`;
+
+const Period = styled.span`
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--secondary);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  @media (prefers-color-scheme: dark) {
+    background: rgba(255, 255, 255, 0.05);
+  }
+`;
+
+const Description = styled.p`
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+`;
+
+const AchievementList = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
+
+const AchievementItem = styled.li`
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--secondary);
+
+  &::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: bold;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+  }
+`;
+
+const ArticlesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ArticleCard = styled.article`
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  }
+`;
+
+const ArticleHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+`;
+
+const Category = styled.span`
+  padding: 0.4rem 0.9rem;
+  background: rgba(102, 126, 234, 0.1);
+  color: var(--accent);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+`;
+
+const Date = styled.span`
+  font-size: 0.9rem;
+  color: var(--secondary);
+`;
+
+const ArticleTitle = styled.h3`
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+`;
+
+const Excerpt = styled.p`
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--secondary);
+  margin-bottom: 1rem;
+`;
+
+const ReadMore = styled.button`
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`;
 
 const experiences = [
   {
@@ -75,111 +293,55 @@ const articles = [
 
 export default function Experience() {
   return (
-    <div className="bg-white dark:bg-zinc-950 py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold text-zinc-900 dark:text-white mb-4">
-            Experience & Knowledge
-          </h1>
-          <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
+    <PageWrapper>
+      <Container>
+        <Header>
+          <Title>Experience & Knowledge</Title>
+          <Subtitle>
             My professional journey and insights from years of building web applications
-          </p>
-        </div>
+          </Subtitle>
+        </Header>
 
-        {/* Experience Section */}
-        <section className="mb-20">
-          <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-8">
-            Professional Experience
-          </h2>
-          <div className="space-y-8">
-            {experiences.map((experience) => (
-              <div
-                key={experience.id}
-                className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200"
-              >
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-1">
-                      {experience.title}
-                    </h3>
-                    <p className="text-lg text-blue-600 dark:text-blue-500 mb-2">
-                      {experience.company}
-                    </p>
-                  </div>
-                  <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-4 py-2 rounded-full">
-                    {experience.period}
-                  </span>
-                </div>
-                <p className="text-zinc-600 dark:text-zinc-400 mb-4">
-                  {experience.description}
-                </p>
-                <div className="space-y-2">
-                  <p className="text-sm font-semibold text-zinc-900 dark:text-white">
-                    Key Achievements:
-                  </p>
-                  <ul className="space-y-2">
-                    {experience.achievements.map((achievement, index) => (
-                      <li
-                        key={index}
-                        className="flex items-start text-zinc-600 dark:text-zinc-400"
-                      >
-                        <svg
-                          className="w-5 h-5 text-blue-600 dark:text-blue-500 mr-2 mt-0.5 flex-shrink-0"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
-                        {achievement}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <Section>
+          <SectionTitle>Professional Experience</SectionTitle>
+          {experiences.map((experience) => (
+            <ExperienceCard key={experience.id}>
+              <ExperienceHeader>
+                <ExperienceInfo>
+                  <JobTitle>{experience.title}</JobTitle>
+                  <Company>{experience.company}</Company>
+                </ExperienceInfo>
+                <Period>{experience.period}</Period>
+              </ExperienceHeader>
+              <Description>{experience.description}</Description>
+              <AchievementList>
+                {experience.achievements.map((achievement, index) => (
+                  <AchievementItem key={index}>
+                    {achievement}
+                  </AchievementItem>
+                ))}
+              </AchievementList>
+            </ExperienceCard>
+          ))}
+        </Section>
 
-        {/* Knowledge Sharing Section */}
-        <section>
-          <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-8">
-            Articles & Insights
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Section>
+          <SectionTitle>Articles & Insights</SectionTitle>
+          <ArticlesGrid>
             {articles.map((article) => (
-              <div
-                key={article.id}
-                className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200 cursor-pointer"
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <span className="px-3 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-400 rounded-full">
-                    {article.category}
-                  </span>
-                  <span className="text-sm text-zinc-500 dark:text-zinc-500">
-                    {article.date}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-2">
-                  {article.title}
-                </h3>
-                <p className="text-zinc-600 dark:text-zinc-400 mb-4">
-                  {article.excerpt}
-                </p>
-                <button className="text-blue-600 dark:text-blue-500 font-medium hover:text-blue-700 dark:hover:text-blue-400 transition-colors">
-                  Read more →
-                </button>
-              </div>
+              <ArticleCard key={article.id}>
+                <ArticleHeader>
+                  <Category>{article.category}</Category>
+                  <Date>{article.date}</Date>
+                </ArticleHeader>
+                <ArticleTitle>{article.title}</ArticleTitle>
+                <Excerpt>{article.excerpt}</Excerpt>
+                <ReadMore>Read more →</ReadMore>
+              </ArticleCard>
             ))}
-          </div>
-        </section>
-      </div>
-    </div>
+          </ArticlesGrid>
+        </Section>
+      </Container>
+    </PageWrapper>
   );
 }

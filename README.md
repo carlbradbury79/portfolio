@@ -1,6 +1,6 @@
 # Portfolio
 
-A professional portfolio site built with Next.js, TypeScript, and Tailwind CSS.
+A professional portfolio site built with Next.js, TypeScript, and Styled Components.
 
 ## Features
 
@@ -9,6 +9,14 @@ A professional portfolio site built with Next.js, TypeScript, and Tailwind CSS.
 - **Experience Page**: Professional experience timeline and knowledge articles
 - **Responsive Design**: Mobile-friendly navigation and layouts
 - **Dark Mode**: Automatic dark mode support based on system preferences
+- **Modern Styling**: Styled Components with sophisticated, editorial design
+
+## Tech Stack
+
+- [Next.js 16](https://nextjs.org) - React framework with App Router
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+- [Styled Components](https://styled-components.com) - CSS-in-JS styling solution
+- System fonts for optimal performance
 
 ## Getting Started
 
@@ -25,13 +33,6 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Tech Stack
-
-- [Next.js 16](https://nextjs.org) - React framework with App Router
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- [Tailwind CSS v4](https://tailwindcss.com) - Utility-first CSS framework
-- System fonts for optimal performance
 
 ## Build
 
