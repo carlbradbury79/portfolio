@@ -66,7 +66,7 @@ export default function Projects() {
             My Projects
           </h1>
           <p className="text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-            A collection of projects I've worked on, showcasing my skills and passion for development
+            A collection of projects I&apos;ve worked on, showcasing my skills and passion for development
           </p>
         </div>
 
